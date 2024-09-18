@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:backgroundTint="@color/grey_font">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHADOW 8D PRODUCER"
+            android:textSize="25sp"
+            android:maxWidth="350dp"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/satoshi_bold"
+            android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/episodeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Episode : 8D PRODUCER"
+                android:textSize="18sp"
+                android:layout_below="@+id/titleTV"
+                android:fontFamily="@font/satoshi_regular"
+                android:textColor="@color/white"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_add"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/playListImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/card_img"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/playlistDescriptionTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:maxLines="4"
+            android:text="Seot fsdfbdfbhbfhdbvdjhvdvbbhbdfhbvdfvdfvdbvdfvfvdbfvdfbvdfbvjhdbvjhbvdjhbvdjhbvjhvbjhbvdbvvjhdbvjhdbvjhdfdvbfvbdfvjhdbvjhdfbvjhvbdjhvbhvbdfh"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Preview Episode"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:background="@drawable/text_capsule"
+                android:backgroundTint="@color/black"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:drawablePadding="2dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_semibold"
+                android:drawableStart="@drawable/ic_mute"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true">
+            <ImageView
+                android:id="@+id/threeDotsBtn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_three_dots"
+                android:layout_marginEnd="5dp"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/pauseBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_play" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

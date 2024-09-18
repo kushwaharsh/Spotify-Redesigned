@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="AppMainBackgroundBG">#0D0C0C</color>
+    <color name="AppCharcoalBlackBG">#28282B</color>
+    <color name="AppSecondaryBG">#1a1110</color>
+    <color name="AppBarColorBG">#343434</color>
+    <color name="MainGreenColor">#42C83C</color>
+    <color name="blackGrey">#797979</color>
+    <color name="blueText">#288CE9</color>
+    <color name="blackGreyTextBold">#A7A7A7</color>
+</resources>
