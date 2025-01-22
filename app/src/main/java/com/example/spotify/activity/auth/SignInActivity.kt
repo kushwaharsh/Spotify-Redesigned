@@ -14,6 +14,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

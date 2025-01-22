@@ -36,6 +36,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -60,6 +61,7 @@ dependencies {
 
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 
+
     //circular image View
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
@@ -71,5 +73,17 @@ dependencies {
     // Glide library
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
+    //Retrofit and Gson Dependency
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    //ViewModel and LiveData Dependency
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
+    //Coroutine Dependency
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
+    //OkHTTP Dependency
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:elevation="5dp"
+    android:layout_marginVertical="9dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/bgEventImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/dummy_img_5"
+        android:scaleType="fitXY"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shareBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/wishlisttBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_wishlist"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/shareBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/button_border_style"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/eventDayTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_et_border"
+                android:fontFamily="@font/satoshi_regular"
+                android:gravity="center_horizontal"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:text="Sun"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/eventDateTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/satoshi_bold"
+                android:gravity="center"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:text="26"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/eventMonthTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/satoshi_regular"
+                android:gravity="center_horizontal"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:text="Nov"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/eventNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/satoshi_bold"
+            android:maxLines="1"
+            android:layout_marginEnd="20dp"
+            android:text="Entrepreneur Mixers"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toTopOf="@+id/eventVenueTv"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/eventVenueTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_semibold"
+            android:maxLines="1"
+            android:text="The Beer Cafe, Garden Galleria"
+            android:textColor="@color/light_grey"
+            android:textSize="16sp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

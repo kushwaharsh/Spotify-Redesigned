@@ -6,23 +6,26 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.denzcoskun.imageslider.BuildConfig
-import com.example.spotify.activity.home.HomeFragment
 import com.example.spotify.models.AudioModel
 
 object Common {
 
-    inline fun <reified T: AudioModel>getAllAudioFiles(context: Context): List<T> {
+    inline fun <reified T : AudioModel> getAllAudioFiles(context: Context): List<T> {
         val audioList = mutableListOf<AudioModel>()
 
         val projection = arrayOf(
             MediaStore.Audio.Media._ID,
             MediaStore.Audio.Media.TITLE,
+            MediaStore.Audio.Media.ARTIST,
+            MediaStore.Audio.Media.ALBUM,
+            MediaStore.Audio.Media.GENRE,
+            MediaStore.Audio.Media.TRACK,
             MediaStore.Audio.Media.DATA,
             MediaStore.Audio.Media.ALBUM_ID,
-            MediaStore.Audio.Media.DURATION
+            MediaStore.Audio.Media.DURATION,
+            MediaStore.Audio.Media.SIZE
         )
+
         val selection = "${MediaStore.Audio.Media.IS_MUSIC} != 0 AND ${MediaStore.Audio.Media.DURATION} >= 10000" // Filtering for songs with duration >= 10 seconds
         val sortOrder = "${MediaStore.Audio.Media.TITLE} ASC"
 
@@ -41,18 +44,28 @@ object Common {
         )
 
         cursor?.use {
+            val idColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)
             val titleColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)
+            val artistColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)
+            val albumColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM)
+            val genreColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.GENRE)
+            val trackColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.TRACK)
             val dataColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA)
             val albumIdColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID)
             val durationColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)
+            val sizeColumn = it.getColumnIndexOrThrow(MediaStore.Audio.Media.SIZE)
 
             while (it.moveToNext()) {
+                val id = it.getLong(idColumn)
                 val title = it.getString(titleColumn)
+                val artist = it.getString(artistColumn) ?: "Unknown Artist"
+                val album = it.getString(albumColumn) ?: "Unknown Album"
+                val genre = it.getString(genreColumn) ?: "Unknown Genre"
+                val trackNumber = it.getString(trackColumn)?.toIntOrNull() ?: 0
                 val path = it.getString(dataColumn)
                 val albumId = it.getLong(albumIdColumn)
                 val duration = it.getLong(durationColumn)
-                val artistName = it.getString(titleColumn)
-
+                val size = it.getLong(sizeColumn)
 
                 // Fetch album art
                 val albumArtUri = ContentUris.withAppendedId(
@@ -60,28 +73,49 @@ object Common {
                 )
                 val albumArt = albumArtUri.toString() // Convert URI to String
 
-                if (BuildConfig.DEBUG) {
-                    Log.d("HomeFragment", "Found audio file: $title, Path: $path, Duration: $duration, Album Art: $albumArt")
-                }
+                Log.d(
+                    "AudioFile",
+                    "ID: $id, Title: $title, Artist: $artist, Album: $album, Genre: $genre, " +
+                            "Track: $trackNumber, Duration: $duration, Path: $path, Size: $size, Album Art: $albumArt"
+                )
 
-                when(T::class.java){
+                // Create instances of AudioModel based on the type
+                when (T::class.java) {
                     AudioModel.YourTopMixesModel::class.java -> {
                         audioList.add(
-                            AudioModel.YourTopMixesModel(title, path, albumArt, duration,
-                                artistName)
+                            AudioModel.YourTopMixesModel(
+                                title = title,
+                                path = path,
+                                albumArt = albumArt,
+                                duration = duration,
+                                artistName = artist,
+                                albumName = album,
+                                genre = genre,
+                                trackNumber = trackNumber,
+                                size = size
+                            )
                         )
                     }
                     AudioModel.AudioFileModel::class.java -> {
                         audioList.add(
-                            AudioModel.AudioFileModel(title, path, albumArt, duration )
+                            AudioModel.AudioFileModel(
+                                title = title,
+                                path = path,
+                                albumArt = albumArt,
+                                duration = duration,
+                                artist = artist,
+                                album = album,
+                                genre = genre,
+                                trackNumber = trackNumber,
+                                size = size
+                            )
                         )
                     }
                 }
             }
-        } ?: Log.d("HomeFragment", "Cursor is null")
+        } ?: Log.d("AudioFile", "Cursor is null")
 
-        Log.d("HomeFragment", "Total audio files found: ${audioList.size}")
+        Log.d("AudioFile", "Total audio files found: ${audioList.size}")
         return audioList as MutableList<T>
     }
-
 }

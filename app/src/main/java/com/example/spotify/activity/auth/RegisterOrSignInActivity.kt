@@ -13,6 +13,7 @@ class RegisterOrSignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterOrSignInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityRegisterOrSignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

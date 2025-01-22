@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spotify.databinding.HomeCardEachItemBinding
-import com.example.spotify.databinding.SuggestedArtistEachItemBinding
-import com.example.spotify.models.HomeCardDataModel
-import com.example.spotify.models.SuggestedArtistDataModel
+import com.example.spotify.models.GetAlbumsResponseModel
 
-class HomeCardsAdapters(private val items: List<HomeCardDataModel>) : RecyclerView.Adapter<HomeCardsAdapters.ItemViewHolder>() {
+class HomeCardsAdapters(private val items: List<GetAlbumsResponseModel>) : RecyclerView.Adapter<HomeCardsAdapters.ItemViewHolder>() {
 
     class ItemViewHolder(val binding: HomeCardEachItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -19,10 +17,10 @@ class HomeCardsAdapters(private val items: List<HomeCardDataModel>) : RecyclerVi
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = items[position]
-        holder.binding.titleTV.text = item.playListTitle
-        holder.binding.playListImage.setImageResource(item.image)
-        holder.binding.episodeTV.text = item.episodeDescription
-        holder.binding.playlistDescriptionTV.text = item.playlistDecription
+//        holder.binding.titleTV.text = item.playListTitle
+//        holder.binding.playListImage.setImageResource(item.image)
+//        holder.binding.episodeTV.text = item.episodeDescription
+//        holder.binding.playlistDescriptionTV.text = item.playlistDecription
     }
 
     override fun getItemCount(): Int = items.size

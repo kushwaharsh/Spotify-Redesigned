@@ -9,5 +9,9 @@
     <color name="MainGreenColor">#42C83C</color>
     <color name="blackGrey">#797979</color>
     <color name="blueText">#288CE9</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="charcoalBlack">#191919</color>
+
+
     <color name="blackGreyTextBold">#A7A7A7</color>
 </resources>

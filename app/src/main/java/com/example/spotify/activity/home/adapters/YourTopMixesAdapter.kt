@@ -34,8 +34,8 @@ class YourTopMixesAdapter(
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(yourTopMixes: AudioModel.YourTopMixesModel) {
-            binding.playlistCreaters.text = "Artist Name" // Set artist name if available
-            binding.playlistTitle.text = yourTopMixes.title // Display song title
+            binding.playlistCreaters.text = yourTopMixes.artistName // Set artist name if available
+            binding.playlistTitle.text = yourTopMixes.albumName // Display song title
 
             // Load album art
             Glide.with(context)
